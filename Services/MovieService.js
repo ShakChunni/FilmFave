@@ -19,6 +19,5 @@ const getNowPlayingMovies = () =>
 
 const getPoster = (path) => `${TMDB_IMAGE_BASE_URL}/original${path}`;
 
-
+//this is not working
 export { getNowPlayingMovies, getPoster };
-
