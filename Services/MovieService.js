@@ -13,7 +13,7 @@ const TMDB_HTTP_REQUEST = axios.create({
     api_key: TMDB_API_KEY,
   },
 });
-
+//KAAAJ KORI NI
 const getNowPlayingMovies = () =>
   TMDB_HTTP_REQUEST.get(ENDPOINTS.NOW_PLAYING_MOVIES);
 
