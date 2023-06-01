@@ -14,6 +14,7 @@ const TMDB_HTTP_REQUEST = axios.create({
   },
 });
 //KAAAJ KORI NI
+//ajkeo kori ni : )
 const getNowPlayingMovies = () =>
   TMDB_HTTP_REQUEST.get(ENDPOINTS.NOW_PLAYING_MOVIES);
 
