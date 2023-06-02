@@ -5,7 +5,7 @@ import {
   TMDB_BASE_URL,
   TMDB_IMAGE_BASE_URL,
   ENDPOINTS,
-} from "../components/API";
+} from "../components/APIs";
 
 const TMDB_HTTP_REQUEST = axios.create({
   baseURL: TMDB_BASE_URL,
