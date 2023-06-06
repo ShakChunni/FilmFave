@@ -5,7 +5,7 @@ const ItemSeparator = ({ height, width }) => {
   return;
   <View style={{ width, height }} />;
 };
-
+//kichu kori ni ajkeo keno jani shoril kharap lagteseye
 ItemSeparator.defaultProps = {
   height: 0,
   width: 0,
