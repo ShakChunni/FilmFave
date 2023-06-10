@@ -5,7 +5,7 @@ const ItemSeparator = ({ height, width }) => {
   return;
   <View style={{ width, height }} />;
 };
-
+//kaaj
 ItemSeparator.defaultProps = {
   height: 0,
   width: 0,
