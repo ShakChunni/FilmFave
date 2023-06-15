@@ -19,7 +19,7 @@ const HomeScreen = () => {
       ) => setNowPlayingMovies(movieResponse.data)
     );
   }, []);
-//hghg
+//hghgdsadaaaaaaaaaaaa
   return (
     <ScrollView style={styles.container}>
       <StatusBar style="auto" translucent={false} backgroundColor="white" />
