@@ -15,7 +15,7 @@ const GenreCards = ({ genreName, active, onPress }) => {
     <TouchableOpacity
       style={{
         ...styles.cardsStyle,
-        backgroundColor: active ? "#057DFE" : "#FFFFFF",
+        backgroundColor: active ? "#FB6B90" : "#FFFFFF",
       }}
       activeOpacity={0.5}
       onPress={() => onPress(genreName)}
@@ -45,6 +45,6 @@ const styles = StyleSheet.create({
   genreText: {
     fontSize: 13,
     fontWeight: "bold",
-    color: "#057DFE",
+    color: "#FB6B90",
   },
 });

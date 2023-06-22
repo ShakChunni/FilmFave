@@ -24,7 +24,7 @@ const MovieCard = ({ title, poster, language, voteAverage, voteCount }) => {
         <View style={styles.imdbContainer}>
           <Image
             source={require("../assets/images/icons8-imdb-96.png")}
-            style={{ width: 35, height: 35, borderBottomLeftRadius: 5 }}
+            style={{ width: 30, height: 30, borderBottomLeftRadius: 5 }}
           />
           <Text style={styles.imdbRating}>{voteAverage}</Text>
         </View>
@@ -32,21 +32,21 @@ const MovieCard = ({ title, poster, language, voteAverage, voteCount }) => {
           <Ionicons
             name={liked ? "thumbs-up" : "thumbs-up-outline"}
             size={24}
-            color={liked ? "#EFDCF9" : "#C55FFC"}
+            color={liked ? "#FB8DA0" : "#FB6B90"}
             style={{ position: "absolute", bottom: 10, right: 10 }}
           />
         </TouchableNativeFeedback>
       </ImageBackground>
       <View style={styles.movieTitle} numberOfLines={3}>
         <Text>{title}</Text>
-        <View style={styles.movieLanguage}>
+        <View style={styles.movieLanguageLike}>
           <Text style={styles.movieLanguageText}>{language}</Text>
           <View style={{ flexDirection: "row", alignItems: "center" }}>
             <Ionicons
               name="thumbs-up"
-              size={18}
+              size={15}
               color="#FB4570"
-              style={{ marginRight: 5 }}
+              style={{ marginRight: 2, marginTop: 7 }}
             />
             <Text style={styles.movieRating}>{voteCount}</Text>
           </View>
@@ -69,28 +69,31 @@ const styles = StyleSheet.create({
   },
   movieTitle: {
     width: 230,
-    fontFamily: "Italic",
+    fontFamily: "Bold",
     fontSize: 12,
-    color: "#5C5C5C",
+    color: "#D67BA8",
     marginTop: 5,
     paddingVertical: 2,
   },
-  movieLanguage: {
+  movieLanguageLike: {
     justifyContent: "space-between",
     flexDirection: "row",
     alignItems: "center",
   },
   movieLanguageText: {
-    fontFamily: "Bold",
-    fontSize: 8,
-    color: "#000000",
+    fontFamily: "Italic",
+    fontSize: 12,
+    color: "#5F093D",
     marginTop: 5,
     paddingVertical: 2,
   },
   movieRating: {
+    marginTop: 5,
+    paddingVertical: 2,
     fontFamily: "Bold",
-    fontSize: 12,
+    fontSize: 14,
     paddingRight: 5,
+    color: "#5F093D",
   },
 
   imdbContainer: {
@@ -103,8 +106,8 @@ const styles = StyleSheet.create({
     paddingVertical: 3,
   },
   imdbRating: {
-    fontFamily: "Regular",
+    fontFamily: "Bold",
     marginRight: 5,
-    color: "yellow",
+    color: "#EFEBE0",
   },
 });
