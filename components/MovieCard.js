@@ -16,7 +16,7 @@ const MovieCard = ({ title, poster, language, voteAverage, voteCount }) => {
   const [liked, setLiked] = useState(false);
 
   return (
-    <TouchableOpacity>
+    <TouchableOpacity activeOpacity={0.8}>
       <ImageBackground
         style={styles.movieCardsContainer}
         source={{ uri: getPoster(poster) }}

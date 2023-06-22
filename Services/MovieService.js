@@ -1,10 +1,5 @@
 const axios = require("axios").default;
-import {
-  TMDB_BASE_URL,
-  TMDB_IMAGE_BASE_URL,
-  API_KEY,
-  ENDPOINTS,
-} from "../components/APIs";
+import { TMDB_BASE_URL, TMDB_IMAGE_BASE_URL, API_KEY, ENDPOINTS } from "./APIs";
 
 const TMDB_HTTP_REQUEST = axios.create({
   baseURL: TMDB_BASE_URL,
