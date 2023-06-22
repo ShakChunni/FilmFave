@@ -1,11 +1,11 @@
-const BASE_URL = "https://api.themoviedb.org/3";
-const IMAGE_BASE_URL = "https://image.tmdb.org/t/p";
+const TMDB_BASE_URL = "https://api.themoviedb.org/3";
+const TMDB_IMAGE_BASE_URL = "https://image.tmdb.org/t/p";
 
-const API_KEY = "ee6fc7fb22613cba152867207a9587df";
+const API_KEY = "cc76c5c345fe442173a4290e48edd347";
 
 const ENDPOINTS = {
-    NOWPLAYING: "/movie/now_playing",
-    UPCOMING: "/movie/upcoming",
+    NOW_PLAYING_MOVIES: "/movie/now_playing",
+    UPCOMING_MOVIES: "/movie/upcoming",
 };
 
-export { BASE_URL, IMAGE_BASE_URL, API_KEY, ENDPOINTS}
+export { TMDB_BASE_URL, TMDB_IMAGE_BASE_URL, API_KEY, ENDPOINTS}
