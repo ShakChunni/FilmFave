@@ -85,11 +85,12 @@ const styles = StyleSheet.create({
   headerTitle: {
     fontFamily: "Italic",
     fontSize: 22,
+    color: "#FB4570",
   },
   headerSubTitle: {
     fontFamily: "Black",
     fontSize: 16,
-    color: "#FB4570",
+    color: "#FB6B90",
   },
   genreListContainer: {
     paddingVertical: 10,

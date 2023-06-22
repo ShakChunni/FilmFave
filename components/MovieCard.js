@@ -71,7 +71,6 @@ const styles = StyleSheet.create({
     width: 230,
     fontFamily: "Bold",
     fontSize: 12,
-    color: "#D67BA8",
     marginTop: 5,
     paddingVertical: 2,
   },
