@@ -9,7 +9,7 @@ import {
 import React, { useState } from "react";
 import { Ionicons } from "@expo/vector-icons";
 
-const MovieCard = ({title, language, voteAverage, voteCount, poster}) => {
+const MovieCard = ({title, poster, language, voteAverage, voteCount}) => {
   const [liked, setLiked] = useState(false);
 
   return (
@@ -20,7 +20,7 @@ const MovieCard = ({title, language, voteAverage, voteCount, poster}) => {
             source={require("../assets/images/icons8-imdb-96.png")}
             style={{ width: 35, height: 35, borderBottomLeftRadius: 5 }}
           />
-          <Text style={styles.imdbRating}>10.0</Text>
+          <Text style={styles.imdbRating}>{voteAverage}</Text>
         </View>
         <TouchableNativeFeedback onPress={() => setLiked(!liked)}>
           <Ionicons

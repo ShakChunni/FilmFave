@@ -45,14 +45,22 @@ const HomeScreen = () => {
       </View>
       <View>
         <FlatList //movie card
-          data={Genres}
+          data={nowPlayingMovies.results}
           horizontal
           showsHorizontalScrollIndicator={false}
-          keyExtractor={(item) => item}
+          keyExtractor={(item) => item.id.toString()}
           ItemSeparatorComponent={() => <ItemSeparator width={20} />}
           ListHeaderComponent={() => <ItemSeparator width={20} />}
           ListFooterComponent={() => <ItemSeparator width={20} />}
-          renderItem={({ item }) => <MovieCard />}
+          renderItem={({ item }) => (
+            <MovieCard
+              title={item.title}
+              language={item.original_language}
+              voteAverage={item.vote_average}
+              voteCount={item.vote_count}
+              poster={item.poster_path}
+            />
+          )}
         />
       </View>
     </ScrollView>
