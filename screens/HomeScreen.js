@@ -72,7 +72,7 @@ export default HomeScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#F5F7FA",
+    backgroundColor: "#EFEBE0",
     paddingVertical: 25,
   },
   headerContainer: {
@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
   headerSubTitle: {
     fontFamily: "Black",
     fontSize: 16,
-    color: "#057DFE",
+    color: "#FB4570",
   },
   genreListContainer: {
     paddingVertical: 10,

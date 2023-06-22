@@ -32,7 +32,7 @@ const MovieCard = ({ title, poster, language, voteAverage, voteCount }) => {
           <Ionicons
             name={liked ? "thumbs-up" : "thumbs-up-outline"}
             size={24}
-            color={liked ? "#000000" : "#FFFFFF"}
+            color={liked ? "#EFDCF9" : "#C55FFC"}
             style={{ position: "absolute", bottom: 10, right: 10 }}
           />
         </TouchableNativeFeedback>
@@ -45,7 +45,7 @@ const MovieCard = ({ title, poster, language, voteAverage, voteCount }) => {
             <Ionicons
               name="thumbs-up"
               size={18}
-              color="#000000"
+              color="#FB4570"
               style={{ marginRight: 5 }}
             />
             <Text style={styles.movieRating}>{voteCount}</Text>
@@ -105,6 +105,6 @@ const styles = StyleSheet.create({
   imdbRating: {
     fontFamily: "Regular",
     marginRight: 5,
-    color: "#000000",
+    color: "yellow",
   },
 });
