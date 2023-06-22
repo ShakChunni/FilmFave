@@ -1,10 +1,8 @@
-import { BASE_URL, IMAGE_BASE_URL, API_KEY, ENDPOINTS } from "./URLs";
-import axios from "axios";
-
 const axios = require("axios").default;
-
+import { ENDPOINTS } from "../components/URLs";
+const API_KEY = "ee6fc7fb22613cba152867207a9587df";
 const TMDB_HTTP_REQUEST = axios.create({
-  baseURL: BASE_URL,
+  baseURL: "https://api.themoviedb.org/3",
   params: {
     api_key: API_KEY,
   },

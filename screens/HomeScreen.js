@@ -12,14 +12,6 @@ const Genres = ["All", "Action", "Comedy", "Drama", "Horror", "Sci-Fi"];
 const HomeScreen = () => {
   const [activeGenre, setActiveGenre] = useState("All");
   
-  const [nowPlayingMovies, setNowPlayingMovies] = useState({});
-  useEffect(() => {
-    getNowPlayingMovies().then(
-      (
-        movieResponse //eta bujha lagbey
-      ) => setNowPlayingMovies(movieResponse.data)
-    );
-  }, []);
 
   return (
     <ScrollView style={styles.container}>
