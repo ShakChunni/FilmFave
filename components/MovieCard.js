@@ -5,16 +5,22 @@ import {
   View,
   Image,
   TouchableNativeFeedback,
+  ImageBackground,
 } from "react-native";
+
 import React, { useState } from "react";
 import { Ionicons } from "@expo/vector-icons";
+import { getPoster } from "../Services/MovieService";
 
-const MovieCard = ({title, poster, language, voteAverage, voteCount}) => {
+const MovieCard = ({ title, poster, language, voteAverage, voteCount }) => {
   const [liked, setLiked] = useState(false);
 
   return (
     <TouchableOpacity>
-      <View style={styles.movieCardsContainer}>
+      <ImageBackground
+        style={styles.movieCardsContainer}
+        source={{ uri: getPoster(poster) }}
+      >
         <View style={styles.imdbContainer}>
           <Image
             source={require("../assets/images/icons8-imdb-96.png")}
@@ -30,11 +36,11 @@ const MovieCard = ({title, poster, language, voteAverage, voteCount}) => {
             style={{ position: "absolute", bottom: 10, right: 10 }}
           />
         </TouchableNativeFeedback>
-      </View>
+      </ImageBackground>
       <View style={styles.movieTitle} numberOfLines={3}>
-        <Text>Movie name</Text>
+        <Text>{title}</Text>
         <View style={styles.movieLanguage}>
-          <Text style={styles.movieLanguageText}>Language (Rating)</Text>
+          <Text style={styles.movieLanguageText}>{language}</Text>
           <View style={{ flexDirection: "row", alignItems: "center" }}>
             <Ionicons
               name="thumbs-up"
@@ -42,7 +48,7 @@ const MovieCard = ({title, poster, language, voteAverage, voteCount}) => {
               color="#000000"
               style={{ marginRight: 5 }}
             />
-            <Text style={styles.movieRating}>100%</Text>
+            <Text style={styles.movieRating}>{voteCount}</Text>
           </View>
         </View>
       </View>
