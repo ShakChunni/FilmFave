@@ -15,8 +15,10 @@ export default () => {
     Light: require("./assets/fonts/NunitoSans_10pt-Light.ttf"),
     Regular: require("./assets/fonts/NunitoSans_10pt-Light.ttf"),
     Italic: require("./assets/fonts/NunitoSans_10pt-BoldItalic.ttf"),
+    SemiBold: require("./assets/fonts/NunitoSans_10pt-SemiBold.ttf"),
   });
-  if (!loaded) { // font load nah holey, show the apploading screen
+  if (!loaded) {
+    // font load nah holey, show the apploading screen
     return <AppLoading />;
   }
   return (

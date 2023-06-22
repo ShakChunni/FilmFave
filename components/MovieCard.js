@@ -38,7 +38,7 @@ const MovieCard = ({ title, poster, language, voteAverage, voteCount }) => {
         </TouchableNativeFeedback>
       </ImageBackground>
       <View style={styles.movieTitle} numberOfLines={3}>
-        <Text>{title}</Text>
+        <Text style={styles.movieTitleText}>{title}</Text>
         <View style={styles.movieLanguageLike}>
           <Text style={styles.movieLanguageText}>{language}</Text>
           <View style={{ flexDirection: "row", alignItems: "center" }}>
@@ -75,14 +75,22 @@ const styles = StyleSheet.create({
     marginTop: 5,
     paddingVertical: 2,
   },
+  movieTitleText: {
+    fontFamily: "Bold",
+    fontSize: 12,
+    color: "#5F093D",
+    paddingVertical: 1,
+  },
+
   movieLanguageLike: {
     justifyContent: "space-between",
     flexDirection: "row",
     alignItems: "center",
   },
   movieLanguageText: {
+    justifyContent: "space-between",
     fontFamily: "Italic",
-    fontSize: 12,
+    fontSize: 10,
     color: "#5F093D",
     marginTop: 5,
     paddingVertical: 2,
@@ -91,7 +99,7 @@ const styles = StyleSheet.create({
     marginTop: 5,
     paddingVertical: 2,
     fontFamily: "Bold",
-    fontSize: 14,
+    fontSize: 12,
     paddingRight: 5,
     color: "#5F093D",
   },
@@ -100,10 +108,10 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     alignSelf: "flex-end",
-    backgroundColor: "Yellow",
     borderBottomEndRadius: 5,
     borderTopRightRadius: 12,
-    paddingVertical: 3,
+    paddingVertical: 2,
+    paddingHorizontal: 3,
   },
   imdbRating: {
     fontFamily: "Bold",
