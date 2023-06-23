@@ -41,7 +41,7 @@ const MovieCard = ({ title, poster, language, voteAverage, voteCount }) => {
         <Text style={styles.movieTitleText}>{title}</Text>
         <View style={styles.movieLanguageLike}>
           <Text style={styles.movieLanguageText}>{language}</Text>
-          <View style={{ flexDirection: "row", alignItems: "center" }}>
+          <View style={{ flexDirection: "row", alignItems: "center" }}>                     //color palate niye not sure yet
             <Ionicons
               name="thumbs-up"
               size={15}
