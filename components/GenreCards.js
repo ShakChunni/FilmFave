@@ -21,7 +21,7 @@ const GenreCards = ({ genreName, active, onPress }) => {
       onPress={() => onPress(genreName)}
     >
       <Text
-        style={styles.genreText}
+        style={{ ...styles.genreText, color: active ? "#FFFFFF" : "#FB6B90" }}
       >
         {genreName}
       </Text>

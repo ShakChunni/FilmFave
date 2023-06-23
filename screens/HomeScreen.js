@@ -11,8 +11,6 @@ import {
   getGenres,
 } from "../Services/MovieService";
 
-const Genres = ["All", "Action", "Comedy", "Drama", "Horror", "Sci-Fi"];
-
 const HomeScreen = () => {
   const [activeGenre, setActiveGenre] = useState("All");
   const [nowPlayingMovies, setNowPlayingMovies] = useState({});
@@ -26,7 +24,7 @@ const HomeScreen = () => {
       setUpComingMovies(movieResponse.data)
     );
     getGenres().then((genreResponse) =>
-      setGenres([...genres, genreResponse.data.genres])
+      setGenres([...genres, ...genreResponse.data.genres])
     );
   }, []);
 
@@ -39,16 +37,16 @@ const HomeScreen = () => {
       </View>
       <View style={styles.genreListContainer}>
         <FlatList
-          data={Genres}
+          data={genres}
           horizontal
           showsHorizontalScrollIndicator={false}
-          keyExtractor={(item) => item}
+          keyExtractor={(item) => item.id.toString()}
           ItemSeparatorComponent={() => <ItemSeparator width={20} />}
           ListHeaderComponent={() => <ItemSeparator width={20} />}
           ListFooterComponent={() => <ItemSeparator width={20} />}
           renderItem={({ item }) => (
             <GenreCards
-              genreName={item}
+              genreName={item.name}
               active={item.name === activeGenre ? true : false}
               onPress={setActiveGenre}
             />
