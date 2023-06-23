@@ -12,39 +12,67 @@ import React, { useState } from "react";
 import { Ionicons } from "@expo/vector-icons";
 import { getPoster } from "../Services/MovieService";
 
-const MovieCard = ({ title, poster, language, voteAverage, voteCount }) => {
+const MovieCard = ({
+  title,
+  poster,
+  language,
+  voteAverage,
+  voteCount,
+  size,
+}) => {
   const [liked, setLiked] = useState(false);
 
   return (
     <TouchableOpacity activeOpacity={0.8}>
       <ImageBackground
-        style={styles.movieCardsContainer}
+        style={{
+          ...styles.movieCardsContainer,
+          width: 230 * size,
+          height: 360 * size,
+        }}
         source={{ uri: getPoster(poster) }}
       >
-        <View style={styles.imdbContainer}>
+        <View style={{ ...styles.imdbContainer, paddingVertical: 3 * size }}>
           <Image
             source={require("../assets/images/icons8-imdb-96.png")}
-            style={{ width: 30, height: 30, borderBottomLeftRadius: 5 }}
+            style={{
+              width: 30,
+              height: 30,
+              borderBottomLeftRadius: 5,
+              height: 20 * size,
+              width: 50 * size,
+            }}
           />
-          <Text style={styles.imdbRating}>{voteAverage}</Text>
+          <Text
+            style={{
+              ...styles.imdbRating,
+              marginRight: 5 * size,
+              fontSize: 14 * size,
+            }}
+          >
+            {voteAverage}
+          </Text>
         </View>
         <TouchableNativeFeedback onPress={() => setLiked(!liked)}>
           <Ionicons
             name={liked ? "thumbs-up" : "thumbs-up-outline"}
-            size={24}
+            size={24 * size}
             color={liked ? "#FB8DA0" : "#FB6B90"}
             style={{ position: "absolute", bottom: 10, right: 10 }}
           />
         </TouchableNativeFeedback>
       </ImageBackground>
-      <View style={styles.movieTitle} numberOfLines={3}>
+      <View
+        style={{ ...styles.movieTitle, width: 230 * size }}
+        numberOfLines={3}
+      >
         <Text style={styles.movieTitleText}>{title}</Text>
         <View style={styles.movieLanguageLike}>
           <Text style={styles.movieLanguageText}>{language}</Text>
-          <View style={{ flexDirection: "row", alignItems: "center" }}>                     //color palate niye not sure yet
+          <View style={{ flexDirection: "row", alignItems: "center" }}>
             <Ionicons
               name="thumbs-up"
-              size={15}
+              size={15 * size}
               color="#FB4570"
               style={{ marginRight: 2, marginTop: 7 }}
             />
@@ -56,13 +84,16 @@ const MovieCard = ({ title, poster, language, voteAverage, voteCount }) => {
   );
 };
 
+MovieCard.defaultProps = {
+  size: 1,
+};
+
 export default MovieCard;
 
 const styles = StyleSheet.create({
   movieCardsContainer: {
     height: 340,
     width: 230,
-    backgroundColor: "pink",
     borderRadius: 12,
     elevation: 5,
     marginVertical: 2,
@@ -76,8 +107,8 @@ const styles = StyleSheet.create({
   },
   movieTitleText: {
     fontFamily: "Bold",
-    fontSize: 12,
-    color: "#5F093D",
+    fontSize: 14,
+    color: "#000000",
     paddingVertical: 1,
   },
 
@@ -89,9 +120,10 @@ const styles = StyleSheet.create({
   movieLanguageText: {
     justifyContent: "space-between",
     fontFamily: "Italic",
-    fontSize: 10,
-    color: "#5F093D",
+    fontSize: 12,
+    color: "#FB6B90",
     marginTop: 5,
+
     paddingVertical: 2,
   },
   movieRating: {
@@ -100,7 +132,7 @@ const styles = StyleSheet.create({
     fontFamily: "Bold",
     fontSize: 12,
     paddingRight: 5,
-    color: "#5F093D",
+    color: "#FB6B90",
   },
 
   imdbContainer: {
