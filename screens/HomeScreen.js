@@ -8,6 +8,7 @@ import MovieCard from "../components/MovieCard";
 import {
   getNowPlayingMovies,
   getUpComingMovies,
+  getGenres,
 } from "../Services/MovieService";
 
 const Genres = ["All", "Action", "Comedy", "Drama", "Horror", "Sci-Fi"];
@@ -16,12 +17,16 @@ const HomeScreen = () => {
   const [activeGenre, setActiveGenre] = useState("All");
   const [nowPlayingMovies, setNowPlayingMovies] = useState({});
   const [upComingMovies, setUpComingMovies] = useState({});
+  const [genres, setGenres] = useState([{ id: 10130, name: "All" }]);
   useEffect(() => {
     getNowPlayingMovies().then((movieResponse) =>
       setNowPlayingMovies(movieResponse.data)
     );
     getUpComingMovies().then((movieResponse) =>
       setUpComingMovies(movieResponse.data)
+    );
+    getGenres().then((genreResponse) =>
+      setGenres([...genres, genreResponse.data.genres])
     );
   }, []);
 
