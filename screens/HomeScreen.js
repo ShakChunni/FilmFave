@@ -5,16 +5,23 @@ import GenreCards from "../components/GenreCards";
 import ItemSeparator from "../components/ItemSeparator";
 import { StatusBar } from "expo-status-bar";
 import MovieCard from "../components/MovieCard";
-import { getNowPlayingMovies } from "../Services/MovieService";
+import {
+  getNowPlayingMovies,
+  getUpComingMovies,
+} from "../Services/MovieService";
 
 const Genres = ["All", "Action", "Comedy", "Drama", "Horror", "Sci-Fi"];
 
 const HomeScreen = () => {
   const [activeGenre, setActiveGenre] = useState("All");
   const [nowPlayingMovies, setNowPlayingMovies] = useState({});
+  const [upComingMovies, setUpComingMovies] = useState({});
   useEffect(() => {
     getNowPlayingMovies().then((movieResponse) =>
       setNowPlayingMovies(movieResponse.data)
+    );
+    getUpComingMovies().then((movieResponse) =>
+      setUpComingMovies(movieResponse.data)
     );
   }, []);
 
@@ -59,6 +66,31 @@ const HomeScreen = () => {
               voteAverage={item.vote_average}
               voteCount={item.vote_count}
               poster={item.poster_path}
+            />
+          )}
+        />
+      </View>
+      <View style={styles.headerContainer}>
+        <Text style={styles.headerTitle}> Upcoming </Text>
+        <Text style={styles.headerSubTitle}> View All </Text>
+      </View>
+      <View>
+        <FlatList //upcoming movie card
+          data={upComingMovies.results}
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          keyExtractor={(item) => item.id.toString()}
+          ItemSeparatorComponent={() => <ItemSeparator width={20} />}
+          ListHeaderComponent={() => <ItemSeparator width={20} />}
+          ListFooterComponent={() => <ItemSeparator width={20} />}
+          renderItem={({ item }) => (
+            <MovieCard
+              title={item.title}
+              language={item.original_language}
+              voteAverage={item.vote_average}
+              voteCount={item.vote_count}
+              poster={item.poster_path}
+              size={0.7}
             />
           )}
         />
