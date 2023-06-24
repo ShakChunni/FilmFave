@@ -8,5 +8,5 @@ const ENDPOINTS = {
     UPCOMING_MOVIES: "/movie/upcoming",
     GENRES: "/genre/movie/list",
 };
-
+//aro kaaj korbo
 export { TMDB_BASE_URL, TMDB_IMAGE_BASE_URL, API_KEY, ENDPOINTS}
