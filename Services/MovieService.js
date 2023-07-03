@@ -8,6 +8,8 @@ const TMDB_HTTP_REQUEST = axios.create({
   },
 });
 //has to work on the movie details API after I come back
+
+//time to get to work
 const getNowPlayingMovies = () =>
   TMDB_HTTP_REQUEST.get(ENDPOINTS.NOW_PLAYING_MOVIES);
 const getUpComingMovies = () =>
