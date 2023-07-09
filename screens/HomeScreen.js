@@ -8,7 +8,6 @@ import MovieCard from "../components/MovieCard";
 import {
   getNowPlayingMovies,
   getUpComingMovies,
-  getPoster,
   getGenres,
 } from "../services/MovieService";
 

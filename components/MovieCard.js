@@ -21,6 +21,7 @@ const MovieCard = ({
   size,
 }) => {
   const [liked, setLiked] = useState(false);
+  const [vote, setVote] = useState(voteCount);
 
   return (
     <TouchableOpacity activeOpacity={0.8}>
@@ -53,7 +54,12 @@ const MovieCard = ({
             {voteAverage}
           </Text>
         </View>
-        <TouchableNativeFeedback onPress={() => setLiked(!liked)}>
+        <TouchableNativeFeedback
+          onPress={() => {
+            setLiked(!liked);
+            setVote(liked ? vote - 1 : vote + 1);
+          }}
+        >
           <Ionicons
             name={liked ? "thumbs-up" : "thumbs-up-outline"}
             size={24 * size}
@@ -76,7 +82,7 @@ const MovieCard = ({
               color="#E6E6FA"
               style={{ marginRight: 2, marginTop: 7 }}
             />
-            <Text style={styles.movieRating}>{voteCount}</Text>
+            <Text style={styles.movieRating}>{vote}</Text>
           </View>
         </View>
       </View>
