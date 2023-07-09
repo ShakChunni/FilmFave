@@ -10,7 +10,7 @@ import {
 
 import React, { useState } from "react";
 import { Ionicons } from "@expo/vector-icons";
-import { getPoster } from "../Services/MovieService";
+import { getPoster } from "../services/MovieService";
 
 const MovieCard = ({
   title,
@@ -57,7 +57,7 @@ const MovieCard = ({
           <Ionicons
             name={liked ? "thumbs-up" : "thumbs-up-outline"}
             size={24 * size}
-            color={liked ? "#FB8DA0" : "#FB6B90"}
+            color={liked ? "#EE82EE" : "#E6E6FA"}
             style={{ position: "absolute", bottom: 10, right: 10 }}
           />
         </TouchableNativeFeedback>
@@ -73,7 +73,7 @@ const MovieCard = ({
             <Ionicons
               name="thumbs-up"
               size={15 * size}
-              color="#FB4570"
+              color="#E6E6FA"
               style={{ marginRight: 2, marginTop: 7 }}
             />
             <Text style={styles.movieRating}>{voteCount}</Text>
@@ -121,7 +121,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     fontFamily: "Italic",
     fontSize: 12,
-    color: "#FB6B90",
+    color: "#EE82EE",
     marginTop: 5,
 
     paddingVertical: 2,
@@ -132,7 +132,7 @@ const styles = StyleSheet.create({
     fontFamily: "Bold",
     fontSize: 12,
     paddingRight: 5,
-    color: "#FB6B90",
+    color: "#E6E6FA",
   },
 
   imdbContainer: {
@@ -147,6 +147,6 @@ const styles = StyleSheet.create({
   imdbRating: {
     fontFamily: "Bold",
     marginRight: 5,
-    color: "#EFEBE0",
+    color: "#E6E6FA",
   },
 });

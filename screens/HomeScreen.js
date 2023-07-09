@@ -8,8 +8,9 @@ import MovieCard from "../components/MovieCard";
 import {
   getNowPlayingMovies,
   getUpComingMovies,
+  getPoster,
   getGenres,
-} from "../Services/MovieService";
+} from "../services/MovieService";
 
 const HomeScreen = () => {
   const [activeGenre, setActiveGenre] = useState("All");
@@ -30,7 +31,7 @@ const HomeScreen = () => {
 
   return (
     <ScrollView style={styles.container}>
-      <StatusBar style="auto" translucent={false} backgroundColor="white" />
+      <StatusBar style="light" translucent={false} />
       <View style={styles.headerContainer}>
         <Text style={styles.headerTitle}> FilmFave </Text>
         <Text style={styles.headerSubTitle}> View All </Text>
@@ -107,7 +108,7 @@ export default HomeScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#EFEBE0",
+    backgroundColor: "#000000",
     paddingVertical: 25,
   },
   headerContainer: {
@@ -120,12 +121,12 @@ const styles = StyleSheet.create({
   headerTitle: {
     fontFamily: "Italic",
     fontSize: 22,
-    color: "#000000",
+    color: "#E6E6FA",
   },
   headerSubTitle: {
     fontFamily: "Black",
     fontSize: 16,
-    color: "#FD49A0",
+    color: "#EE82EE",
   },
   genreListContainer: {
     paddingVertical: 10,

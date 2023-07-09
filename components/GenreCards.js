@@ -15,13 +15,13 @@ const GenreCards = ({ genreName, active, onPress }) => {
     <TouchableOpacity
       style={{
         ...styles.cardsStyle,
-        backgroundColor: active ? "#FB6B90" : "#FFFFFF",
+        backgroundColor: active ? "#EE82EE" : "#000000",
       }}
       activeOpacity={0.5}
       onPress={() => onPress(genreName)}
     >
       <Text
-        style={{ ...styles.genreText, color: active ? "#FFFFFF" : "#FB6B90" }}
+        style={{ ...styles.genreText, color: active ? "#000000" : "#EE82EE" }}
       >
         {genreName}
       </Text>
