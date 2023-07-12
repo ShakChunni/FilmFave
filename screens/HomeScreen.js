@@ -94,6 +94,7 @@ const HomeScreen = () => {
               voteCount={item.vote_count}
               poster={item.poster_path}
               size={0.7}
+              notLiked={false}
             />
           )}
         />
