@@ -38,11 +38,9 @@ const MovieCard = ({
           <Image
             source={require("../assets/images/icons8-imdb-96.png")}
             style={{
-              width: 30,
-              height: 30,
               borderBottomLeftRadius: 5,
               height: 20 * size,
-              width: 50 * size,
+              width: 40 * size,
             }}
           />
           <Text
