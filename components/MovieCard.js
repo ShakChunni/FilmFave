@@ -19,6 +19,7 @@ const MovieCard = ({
   voteAverage,
   voteCount,
   size,
+  notLiked,
 }) => {
   const [liked, setLiked] = useState(false);
   const [vote, setVote] = useState(voteCount);
@@ -54,19 +55,21 @@ const MovieCard = ({
             {voteAverage}
           </Text>
         </View>
-        <TouchableNativeFeedback
-          onPress={() => {
-            setLiked(!liked);
-            setVote(liked ? vote - 1 : vote + 1);
-          }}
-        >
-          <Ionicons
-            name={liked ? "thumbs-up" : "thumbs-up-outline"}
-            size={24 * size}
-            color={liked ? "#EE82EE" : "#E6E6FA"}
-            style={{ position: "absolute", bottom: 10, right: 10 }}
-          />
-        </TouchableNativeFeedback>
+        {!notLiked ? (
+          <TouchableNativeFeedback
+            onPress={() => {
+              setLiked(!liked);
+              setVote(liked ? vote - 1 : vote + 1);
+            }}
+          >
+            <Ionicons
+              name={liked ? "thumbs-up" : "thumbs-up-outline"}
+              size={24 * size}
+              color={liked ? "#EE82EE" : "#E6E6FA"}
+              style={{ position: "absolute", bottom: 10, right: 10 }}
+            />
+          </TouchableNativeFeedback>
+        ) : null}
       </ImageBackground>
       <View
         style={{ ...styles.movieTitle, width: 230 * size }}
@@ -92,6 +95,11 @@ const MovieCard = ({
 
 MovieCard.defaultProps = {
   size: 1,
+};
+
+MovieCard.defaultProps = {
+  size: 1,
+  notLiked: true,
 };
 
 export default MovieCard;
