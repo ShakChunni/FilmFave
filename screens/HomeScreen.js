@@ -69,7 +69,7 @@ const HomeScreen = () => {
               voteAverage={item.vote_average}
               voteCount={item.vote_count}
               poster={item.poster_path}
-              notLiked={false}
+              notLiked={true}
             />
           )}
         />
@@ -95,7 +95,7 @@ const HomeScreen = () => {
               voteCount={item.vote_count}
               poster={item.poster_path}
               size={0.7}
-              notLiked={true}
+              notLiked={false}
             />
           )}
         />

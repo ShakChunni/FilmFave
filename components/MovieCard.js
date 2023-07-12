@@ -53,7 +53,7 @@ const MovieCard = ({
             {voteAverage}
           </Text>
         </View>
-        {!notLiked ? (
+        {notLiked ? (
           <TouchableNativeFeedback
             onPress={() => {
               setLiked(!liked);
