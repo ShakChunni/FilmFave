@@ -97,7 +97,7 @@ const HomeScreen = () => {
             />
           )}
         />
-      </View>  //WE NEED TO make an anime only cardddddddddddd uwu
+      </View> 
     </ScrollView>
   );
 };
