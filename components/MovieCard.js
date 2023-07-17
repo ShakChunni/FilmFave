@@ -20,12 +20,13 @@ const MovieCard = ({
   voteCount,
   size,
   notLiked,
+  onPress,
 }) => {
   const [liked, setLiked] = useState(false);
   const [vote, setVote] = useState(voteCount);
 
   return (
-    <TouchableOpacity activeOpacity={0.8}>
+    <TouchableOpacity activeOpacity={0.8} onPress={onPress}>
       <ImageBackground
         style={{
           ...styles.movieCardsContainer,

@@ -11,7 +11,7 @@ import {
   getGenres,
 } from "../services/MovieService";
 
-const HomeScreen = () => {
+const HomeScreen = ({ navigation }) => {
   const [activeGenre, setActiveGenre] = useState("All");
   const [nowPlayingMovies, setNowPlayingMovies] = useState({});
   const [upComingMovies, setUpComingMovies] = useState({});
@@ -70,6 +70,7 @@ const HomeScreen = () => {
               voteCount={item.vote_count}
               poster={item.poster_path}
               notLiked={true}
+              onPress={() => navigation.navigate("Movie", { id: item.id })}
             />
           )}
         />
@@ -99,7 +100,7 @@ const HomeScreen = () => {
             />
           )}
         />
-      </View> 
+      </View>
     </ScrollView>
   );
 };
