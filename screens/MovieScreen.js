@@ -20,7 +20,7 @@ const MovieScreen = ({ route, navigation }) => {
   const [movie, setMovie] = useState({});
 
   useEffect(() => {
-    getMovieID(id).then((response) => setMovie(response.data));
+    getMovieID(id).then((res) => setMovie(res.data));
   }, []);
 
   return (
