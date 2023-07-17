@@ -41,5 +41,7 @@ const styles = StyleSheet.create({
   moviePosterImage: {
     borderBottomRightRadius: 300,
     borderBottomLeftRadius: 300,
+    height: setHeight(35),
+    width: setWidth(145),
   },
 });
