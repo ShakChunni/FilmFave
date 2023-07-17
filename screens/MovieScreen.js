@@ -1,14 +1,15 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import { StyleSheet, Text, View } from "react-native";
+import React from "react";
 
-const MovieScreen = () => {
+const MovieScreen = ({ route, navigation }) => {
   return (
     <View>
+      <StatusBar style="light" translucent={false} />
       <Text>MovieScreen</Text>
     </View>
-  )
-}
+  );
+};
 
-export default MovieScreen
+export default MovieScreen;
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({});
