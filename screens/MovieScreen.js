@@ -17,17 +17,11 @@ const setWidth = (w) => (width / 100) * w;
 
 const MovieScreen = ({ route, navigation }) => {
   const { movieId } = route.params;
-  const [movie, setMovie] = useState(null);
+  const [movie, setMovie] = useState({});
 
   useEffect(() => {
-    getMovieID(movieId)
-      .then((response) => {
-        setMovie(response.data);
-      })
-      .catch((error) => {
-        console.log("Error retrieving movie details:", error);
-      });
-  }, [movieId]);
+    getMovieID(movieId).then((response) => setMovie(response.data));
+  }, []);
 
   return (
     <ScrollView>

@@ -8,7 +8,7 @@ const ENDPOINTS = {
   NOW_PLAYING_MOVIES: "/movie/now_playing",
   UPCOMING_MOVIES: "/movie/upcoming",
   GENRES: "/genre/movie/list",
-  MOVIE: "/movie/movie_id",
+  MOVIE: "/movie",
 };
 
 
