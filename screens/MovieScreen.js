@@ -12,7 +12,7 @@ import React from "react";
 const { height, width } = Dimensions.get("screen");
 
 const setHeight = (h) => (height / 100) * h;
-const setWidth = (w) => (width / 100) * h;
+const setWidth = (w) => (width / 100) * w;
 
 const MovieScreen = ({ route, navigation }) => {
   const { movieId } = route.params;
@@ -37,5 +37,9 @@ const styles = StyleSheet.create({
   moviePosterImageContainer: {
     height: setHeight(35),
     width: setWidth(145),
+  },
+  moviePosterImage: {
+    borderBottomRightRadius: 300,
+    borderBottomLeftRadius: 300,
   },
 });
