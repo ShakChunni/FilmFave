@@ -1,13 +1,28 @@
-import { StyleSheet, Text, View } from "react-native";
+import {
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  Dimensions,
+} from "react-native";
 import { StatusBar } from "expo-status-bar";
 import React from "react";
 
+const { height, width } = Dimensions.get("screen");
+
+const setHeight = (h) => (height / 100) * h;
+const setWidth = (w) => (width / 100) * h;
+
 const MovieScreen = ({ route, navigation }) => {
+  const { movieId } = route.params;
   return (
-    <View style={styles.container}>
+    <ScrollView>
       <StatusBar style="light" translucent={false} />
-      <Text>MovieScreen</Text>
-    </View>
+      <View>
+        <Image />
+      </View>
+    </ScrollView>
   );
 };
 
@@ -18,5 +33,9 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+  },
+  moviePosterImageContainer: {
+    height: setHeight(35),
+    width: setWidth(145),
   },
 });
