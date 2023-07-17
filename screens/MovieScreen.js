@@ -1,3 +1,4 @@
+import React, { useEffect, useState } from "react";
 import {
   ScrollView,
   StyleSheet,
@@ -7,7 +8,7 @@ import {
   Dimensions,
 } from "react-native";
 import { StatusBar } from "expo-status-bar";
-import React from "react";
+import { getMovieID, getPoster } from "../services/MovieService";
 
 const { height, width } = Dimensions.get("screen");
 
@@ -16,12 +17,30 @@ const setWidth = (w) => (width / 100) * w;
 
 const MovieScreen = ({ route, navigation }) => {
   const { movieId } = route.params;
+  const [movie, setMovie] = useState(null);
+
+  useEffect(() => {
+    getMovieID(movieId)
+      .then((response) => {
+        setMovie(response.data);
+      })
+      .catch((error) => {
+        console.log("Error retrieving movie details:", error);
+      });
+  }, [movieId]);
+
   return (
     <ScrollView>
       <StatusBar style="light" translucent={false} />
-      <View>
-        <Image />
-      </View>
+      {movie && (
+        <View style={styles.moviePosterImageContainer}>
+          <Image
+            style={styles.moviePosterImage}
+            resizeMode="cover"
+            source={{ uri: getPoster(movie.backdrop_path) }}
+          />
+        </View>
+      )}
     </ScrollView>
   );
 };

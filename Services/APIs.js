@@ -8,6 +8,15 @@ const ENDPOINTS = {
   NOW_PLAYING_MOVIES: "/movie/now_playing",
   UPCOMING_MOVIES: "/movie/upcoming",
   GENRES: "/genre/movie/list",
+  MOVIE: "/movie/movie_id",
 };
 
-export { TMDB_BASE_URL, TMDB_IMAGE_BASE_URL, GENRES, API_KEY, ENDPOINTS };
+
+
+export {
+  TMDB_BASE_URL,
+  TMDB_IMAGE_BASE_URL,
+  GENRES,
+  API_KEY,
+  ENDPOINTS,
+};
