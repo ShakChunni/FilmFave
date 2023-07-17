@@ -16,11 +16,11 @@ const setHeight = (h) => (height / 100) * h;
 const setWidth = (w) => (width / 100) * w;
 
 const MovieScreen = ({ route, navigation }) => {
-  const { movieId } = route.params;
+  const { id } = route.params;
   const [movie, setMovie] = useState({});
 
   useEffect(() => {
-    getMovieID(movieId).then((response) => setMovie(response.data));
+    getMovieID(id).then((response) => setMovie(response.data));
   }, []);
 
   return (
