@@ -37,7 +37,7 @@ const MovieScreen = ({ route, navigation }) => {
       )}
     </ScrollView>
   );
-};
+}; //ZIPPLE FAMILY
 
 export default MovieScreen;
 
