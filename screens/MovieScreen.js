@@ -26,6 +26,11 @@ const MovieScreen = ({ route, navigation }) => {
     <ScrollView>
       <StatusBar style="light" />
       <View style={styles.moviePosterImageContainer}>
+        <LinearGradient
+          colors={["rgba(0,0,0,0.5)", "rgb(217, 217, 217, 0)"]}
+          start={[0, 0.3]}
+          style={styles.linearGradient}
+        />
         <Image
           style={styles.moviePosterImage}
           resizeMode="cover"
