@@ -48,6 +48,7 @@ export default MovieScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: "#3B3B3B",
   },
   moviePosterImageContainer: {
     height: setHeight(35),
