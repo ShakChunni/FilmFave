@@ -48,8 +48,15 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   moviePosterImageContainer: {
+    position: "absolute",
+    alignItems: "center",
     height: setHeight(35),
     width: setWidth(145),
+    left: setWidth((100-145)/2),
+    borderBottomRightRadius: 300,
+    borderBottomLeftRadius: 300,
+    elevation: 8,
+
   },
   moviePosterImage: {
     borderBottomRightRadius: 300,
