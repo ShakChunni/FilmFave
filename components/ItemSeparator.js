@@ -1,11 +1,10 @@
-import { View, Text } from "react-native";
 import React from "react";
+import { View } from "react-native";
 
 const ItemSeparator = ({ height, width }) => {
-  return;
-  <View style={{ width, height }} />;
+  return <View style={{ width, height }} />;
 };
-//kaaj
+
 ItemSeparator.defaultProps = {
   height: 0,
   width: 0,
