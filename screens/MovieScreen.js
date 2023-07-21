@@ -73,5 +73,5 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: 0,
     elevation: 9,
-  },
+  }, //ajkey korbo nah ar
 });
