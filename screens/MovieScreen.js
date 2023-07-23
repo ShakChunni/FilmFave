@@ -16,7 +16,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import { getMovieID, getPoster, getVideo } from "../services/MovieService";
 import ItemSeparator from "../components/ItemSeparator";
 import { Ionicons, Feather } from "@expo/vector-icons";
-import { appendToResponse} from "../services/APIs";
+import { appendToResponse } from "../services/APIs";
 
 const { height, width } = Dimensions.get("screen");
 const setHeight = (h) => (height / 100) * h;
@@ -25,7 +25,9 @@ const MovieScreen = ({ route, navigation }) => {
   const { id } = route.params;
   const [movie, setMovie] = useState({});
   useEffect(() => {
-    getMovieID(id, `${appendToResponse.VIDEOS}`).then((res) => setMovie(res.data));
+    getMovieID(id, `${appendToResponse.VIDEOS}`).then((res) =>
+      setMovie(res.data)
+    );
   }, []);
 
   return (
@@ -59,7 +61,13 @@ const MovieScreen = ({ route, navigation }) => {
         <Ionicons name="play-circle" size={60} color="#FFFFFF" />
       </TouchableOpacity>
       <ItemSeparator height={setHeight(37)} />
-      <Text>{movie.title}</Text>
+      <View style={styles.movieTitleContainer}>
+        <Text style={styles.movieTitle}>{movie?.original_title}</Text>
+        <View style={styles.row}>
+          <Ionicons name="thumbs-up" size={24} color="black" />
+          <Text style={styles.ratingText}>{movie?.vote_count}</Text>
+        </View>
+      </View>
     </ScrollView>
   );
 };
@@ -115,5 +123,34 @@ const styles = StyleSheet.create({
     top: 110,
     left: setWidth(50) - 70 / 2,
     elevation: 10,
+  },
+  movieTitleContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    paddingHorizontal: 20,
+  },
+  movieTitle: {
+    color: "#000000",
+    fontFamily: "Bold",
+    fontSize: 18,
+    width: setWidth(60),
+  },
+  ratingText: {
+    marginLeft: 5,
+    color: "#000000",
+    fontFamily: "Black",
+    fontSize: 15,
+  },
+  row: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  genreText: {
+    color: "grey",
+    paddingHorizontal: 20,
+    paddingTop: 5,
+    fontFamily: "Regular",
+    fontSize: 13,
   },
 });
