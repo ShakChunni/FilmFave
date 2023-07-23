@@ -45,7 +45,7 @@ const MovieScreen = ({ route, navigation }) => {
   }, []);
 
   return (
-    <ScrollView style={styles.container}>
+    <View style={styles.container}>
       <StatusBar style="light" />
       <View style={styles.moviePosterImageContainer}>
         <LinearGradient
@@ -64,7 +64,7 @@ const MovieScreen = ({ route, navigation }) => {
           activeOpacity={0.5}
           onPress={() => navigation.goBack()}
         >
-          <Feather name="chevron-left" size={35} color="#FFFFFF" />
+          <Feather name="chevron-left" size={35} color="#EE82EE" />
         </TouchableOpacity>
         <Text style={styles.headerText}>Share</Text>
       </View>
@@ -72,12 +72,13 @@ const MovieScreen = ({ route, navigation }) => {
         style={styles.playButtonStyle}
         onPress={() => Linking.openURL(getVideo(movie.videos.results[0].key))}
       >
-        <Ionicons name="play-circle" size={60} color="#FFFFFF" />
+        <Ionicons name="play-circle" size={60} color="#EE82EE" />
       </TouchableOpacity>
       <ItemSeparator height={setHeight(37)} />
       <View style={styles.movieTitleContainer}>
         <Text style={styles.movieTitle}>
-          {movie?.original_title} <Text style={styles.status}>{movie.status}</Text>
+          {movie?.original_title}{" "}
+          <Text style={styles.status}>{movie.status}</Text>
         </Text>
         <View style={styles.row}>
           <Image
@@ -100,7 +101,7 @@ const MovieScreen = ({ route, navigation }) => {
         <Text style={styles.overviewTitle}>Overview</Text>
         <Text style={styles.overviewText}>{movie?.overview}</Text>
       </View>
-    </ScrollView>
+    </View>
   );
 };
 
@@ -201,7 +202,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
   },
   overviewText: {
-    color: "#E6E6FA",
+    color: "#fff",
     paddingVertical: 5,
     fontFamily: "Bold",
     fontSize: 16,

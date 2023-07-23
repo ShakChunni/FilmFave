@@ -33,7 +33,7 @@ const HomeScreen = ({ navigation }) => {
       <StatusBar style="light" translucent={false} />
       <View style={styles.headerContainer}>
         <Text style={styles.headerTitle}> FilmFave </Text>
-        <Text style={styles.headerSubTitle}> View All </Text>
+        <Text style={styles.headerSubTitle}> Welcome, user! </Text>
       </View>
       <View style={styles.genreListContainer}>
         <FlatList
@@ -76,8 +76,7 @@ const HomeScreen = ({ navigation }) => {
         />
       </View>
       <View style={styles.headerContainer}>
-        <Text style={styles.headerTitle}> Upcoming </Text>
-        <Text style={styles.headerSubTitle}> View All </Text>
+        <Text style={styles.headerTitle}> Upcoming Movies </Text>
       </View>
       <View>
         <FlatList //upcoming movie card
