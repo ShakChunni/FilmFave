@@ -32,12 +32,14 @@ const getMovieID = (movieID, append_to_response = "") => {
     append_to_response ? { params: { append_to_response } } : null
   );
 };
-
 const getVideo = (key) => `${youtubeURL}?v=${key}`;
-
 const getGenres = () => TMDB_HTTP_REQUEST.get(ENDPOINTS.GENRES);
 const getPoster = (path) => `${TMDB_IMAGE_BASE_URL}/original${path}`;
-const getNowPlayingTVShows = () => TMDB_HTTP_REQUEST.get(ENDPOINTS.ON_THE_AIR_TV);
+
+const getNowPlayingTVShows = () =>
+  TMDB_HTTP_REQUEST.get(ENDPOINTS.ON_THE_AIR_TV);
+const getTVGenres = () => TMDB_HTTP_REQUEST.get(ENDPOINTS.TV_GENRES);
+
 export {
   getMovieID,
   getNowPlayingMovies,
@@ -46,4 +48,5 @@ export {
   getGenres,
   getVideo,
   getNowPlayingTVShows,
+  getTVGenres,
 };

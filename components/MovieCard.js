@@ -47,6 +47,7 @@ const MovieCard = ({
           <Text
             style={{
               ...styles.imdbRating,
+              paddingLeft: 3 * size,
               marginRight: 5 * size,
               fontSize: 14 * size,
             }}
@@ -160,6 +161,6 @@ const styles = StyleSheet.create({
   imdbRating: {
     fontFamily: "Bold",
     marginRight: 5,
-    color: "#E6E6FA",
+    color: "yellow",
   },
 });

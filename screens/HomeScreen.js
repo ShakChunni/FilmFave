@@ -106,7 +106,7 @@ const HomeScreen = ({ navigation }) => {
         />
       </View>
       <View style={styles.headerContainer}>
-        <Text style={styles.headerTitle}> Now Playing TV Shows </Text>
+        <Text style={styles.headerTitle}> TV Shows </Text>
       </View>
       <View>
         <FlatList
@@ -124,8 +124,8 @@ const HomeScreen = ({ navigation }) => {
               voteAverage={item.vote_average}
               voteCount={item.vote_count}
               poster={item.poster_path}
-              notLiked={true}
-              onPress={() => navigation.navigate("TVShow", { id: item.id })}
+              size={0.7}
+              notLiked={false}          
             />
           )}
         />

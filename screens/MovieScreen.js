@@ -13,10 +13,16 @@ import {
 } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import { LinearGradient } from "expo-linear-gradient";
-import { getMovieID, getPoster, getVideo } from "../services/MovieService";
+import {
+  getNowPlayingMovies,
+  getMovieID,
+  getPoster,
+  getVideo,
+} from "../services/MovieService";
 import ItemSeparator from "../components/ItemSeparator";
 import { Ionicons, Feather } from "@expo/vector-icons";
 import { appendToResponse } from "../services/APIs";
+import MovieCard from "../components/MovieCard";
 
 const { height, width } = Dimensions.get("screen");
 const setHeight = (h) => (height / 100) * h;
@@ -24,7 +30,10 @@ const setWidth = (w) => (width / 100) * w;
 const MovieScreen = ({ route, navigation }) => {
   const { id } = route.params;
   const [movie, setMovie] = useState({});
-
+  const [nowPlayingMovies, setNowPlayingMovies] = useState({});
+  getNowPlayingMovies().then((movieResponse) =>
+    setNowPlayingMovies(movieResponse.data)
+  );
   useEffect(() => {
     getMovieID(id, `${appendToResponse.VIDEOS}, ${appendToResponse.CREDITS}`)
       .then((res) => {
@@ -34,7 +43,7 @@ const MovieScreen = ({ route, navigation }) => {
   }, []);
 
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <StatusBar style="light" />
       <View style={styles.moviePosterImageContainer}>
         <LinearGradient
@@ -65,10 +74,7 @@ const MovieScreen = ({ route, navigation }) => {
       </TouchableOpacity>
       <ItemSeparator height={setHeight(37)} />
       <View style={styles.movieTitleContainer}>
-        <Text style={styles.movieTitle}>
-          {movie?.original_title}{" "}
-          <Text style={styles.status}>{movie.status}</Text>
-        </Text>
+        <Text style={styles.movieTitle}>{movie?.original_title} </Text>
         <View style={styles.row}>
           <Image
             source={require("../assets/images/icons8-imdb-96.png")}
@@ -81,6 +87,7 @@ const MovieScreen = ({ route, navigation }) => {
           <Text style={styles.ratingText}>{movie?.vote_average}</Text>
         </View>
       </View>
+      <Text style={styles.status}>Release Date: {movie?.release_date}</Text>
       <Text style={styles.genreText}>
         {movie?.genres?.map((genre) => genre?.name)?.join(", ")} |{" "}
         {movie?.runtime} Min
@@ -90,7 +97,32 @@ const MovieScreen = ({ route, navigation }) => {
         <Text style={styles.overviewTitle}>Synopsis</Text>
         <Text style={styles.overviewText}>{movie?.overview}</Text>
       </View>
-    </View>
+
+      {/* Similar Movies */}
+      <Text style={styles.similarMovies}>You might also like</Text>
+      <View>
+        <FlatList //movie card
+          data={nowPlayingMovies.results}
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          keyExtractor={(item) => item.id.toString()}
+          ItemSeparatorComponent={() => <ItemSeparator width={20} />}
+          ListHeaderComponent={() => <ItemSeparator width={20} />}
+          ListFooterComponent={() => <ItemSeparator width={20} />}
+          renderItem={({ item }) => (
+            <MovieCard
+              title={item.title}
+              language={item.original_language}
+              voteAverage={item.vote_average}
+              voteCount={item.vote_count}
+              poster={item.poster_path}
+              notLiked={false}
+              size={0.8}
+            />
+          )}
+        />
+      </View>
+    </ScrollView>
   );
 };
 
@@ -105,6 +137,8 @@ const styles = StyleSheet.create({
     color: "#E6E6FA",
     fontFamily: "Italic",
     fontSize: 14,
+    paddingHorizontal: 20,
+    paddingTop: 5,
   },
   moviePosterImageContainer: {
     height: setHeight(35),
@@ -161,13 +195,14 @@ const styles = StyleSheet.create({
     color: "#EE82EE",
     fontFamily: "Bold",
     fontSize: 18,
-    width: setWidth(60),
+    width: setWidth(75),
   },
   ratingText: {
-    marginLeft: 5,
+    marginLeft: 1,
+    marginRight: 5,
     color: "yellow",
-    fontFamily: "Black",
-    fontSize: 15,
+    fontFamily: "Bold",
+    fontSize: 14,
   },
   row: {
     flexDirection: "row",
@@ -196,5 +231,13 @@ const styles = StyleSheet.create({
     fontFamily: "Bold",
     fontSize: 16,
     textAlign: "justify",
+  },
+  similarMovies: {
+    color: "#EE82EE",
+    fontFamily: "Black",
+    fontSize: 18,
+    paddingHorizontal: 20,
+    paddingTop: 5,
+    paddingBottom: 10,
   },
 });
