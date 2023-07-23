@@ -14,6 +14,7 @@ const ENDPOINTS = {
 
 const appendToResponse = {
   VIDEOS: "videos",
+  CREDITS: "credits",
 };
 
 export {

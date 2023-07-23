@@ -17,6 +17,7 @@ import { getMovieID, getPoster, getVideo } from "../services/MovieService";
 import ItemSeparator from "../components/ItemSeparator";
 import { Ionicons, Feather } from "@expo/vector-icons";
 import { appendToResponse } from "../services/APIs";
+import CastCard from "../components/CastCard";
 
 const { height, width } = Dimensions.get("screen");
 const setHeight = (h) => (height / 100) * h;
@@ -25,9 +26,10 @@ const MovieScreen = ({ route, navigation }) => {
   const { id } = route.params;
   const [movie, setMovie] = useState({});
   useEffect(() => {
-    getMovieID(id, `${appendToResponse.VIDEOS}`).then((res) =>
-      setMovie(res.data)
-    );
+    getMovieID(
+      id,
+      `${appendToResponse.VIDEOS}, ${appendToResponse.CREDITS}`
+    ).then((res) => setMovie(res.data));
   }, []);
 
   return (
@@ -77,7 +79,22 @@ const MovieScreen = ({ route, navigation }) => {
         <Text style={styles.overviewTitle}>Overview</Text>
         <Text style={styles.overviewText}>{movie?.overview}</Text>
       </View>
-      
+      <View>
+        <Text>Cast</Text>
+        <FlatList
+          style={{ marginVertical: 5 }}
+          data={movie?.credits?.cast}
+          keyExtractor={(item) => item?.credit_id}
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          ListHeaderComponent={() => <ItemSeparator width={20} />}
+          ItemSeparatorComponent={() => <ItemSeparator width={20} />}
+          ListFooterComponent={() => <ItemSeparator width={20} />}
+          renderItem={({ item }) => <CastCard
+           name={item?.name}
+            />}
+        />
+      </View>
     </ScrollView>
   );
 };
@@ -164,7 +181,7 @@ const styles = StyleSheet.create({
     fontSize: 13,
   },
   overviewContainer: {
-//add color 
+    //add color
     paddingHorizontal: 20,
     paddingVertical: 10,
     marginVertical: 10,
