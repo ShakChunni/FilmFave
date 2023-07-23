@@ -37,7 +37,7 @@ const getVideo = (key) => `${youtubeURL}?v=${key}`;
 
 const getGenres = () => TMDB_HTTP_REQUEST.get(ENDPOINTS.GENRES);
 const getPoster = (path) => `${TMDB_IMAGE_BASE_URL}/original${path}`;
-
+const getNowPlayingTVShows = () => TMDB_HTTP_REQUEST.get(ENDPOINTS.ON_THE_AIR_TV);
 export {
   getMovieID,
   getNowPlayingMovies,
@@ -45,4 +45,5 @@ export {
   getPoster,
   getGenres,
   getVideo,
+  getNowPlayingTVShows,
 };

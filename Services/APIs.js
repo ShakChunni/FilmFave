@@ -10,6 +10,7 @@ const ENDPOINTS = {
   UPCOMING_MOVIES: "/movie/upcoming",
   GENRES: "/genre/movie/list",
   MOVIE: "/movie",
+  ON_THE_AIR_TV: "/tv/on_the_air",
 };
 
 const appendToResponse = {

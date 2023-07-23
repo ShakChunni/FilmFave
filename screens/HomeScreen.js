@@ -9,12 +9,14 @@ import {
   getNowPlayingMovies,
   getUpComingMovies,
   getGenres,
+  getNowPlayingTVShows,
 } from "../services/MovieService";
 
 const HomeScreen = ({ navigation }) => {
   const [activeGenre, setActiveGenre] = useState("All");
   const [nowPlayingMovies, setNowPlayingMovies] = useState({});
   const [upComingMovies, setUpComingMovies] = useState({});
+  const [nowPlayingTVShows, setNowPlayingTVShows] = useState({});
   const [genres, setGenres] = useState([{ id: 10130, name: "All" }]);
   useEffect(() => {
     getNowPlayingMovies().then((movieResponse) =>
@@ -22,6 +24,9 @@ const HomeScreen = ({ navigation }) => {
     );
     getUpComingMovies().then((movieResponse) =>
       setUpComingMovies(movieResponse.data)
+    );
+    getNowPlayingTVShows().then((tvShowResponse) =>
+      setNowPlayingTVShows(tvShowResponse.data)
     );
     getGenres().then((genreResponse) =>
       setGenres([...genres, ...genreResponse.data.genres])
@@ -96,6 +101,31 @@ const HomeScreen = ({ navigation }) => {
               poster={item.poster_path}
               size={0.7}
               notLiked={false}
+            />
+          )}
+        />
+      </View>
+      <View style={styles.headerContainer}>
+        <Text style={styles.headerTitle}> Now Playing TV Shows </Text>
+      </View>
+      <View>
+        <FlatList
+          data={nowPlayingTVShows.results}
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          keyExtractor={(item) => item.id.toString()}
+          ItemSeparatorComponent={() => <ItemSeparator width={20} />}
+          ListHeaderComponent={() => <ItemSeparator width={20} />}
+          ListFooterComponent={() => <ItemSeparator width={20} />}
+          renderItem={({ item }) => (
+            <MovieCard
+              title={item.name}
+              language={item.original_language}
+              voteAverage={item.vote_average}
+              voteCount={item.vote_count}
+              poster={item.poster_path}
+              notLiked={true}
+              onPress={() => navigation.navigate("TVShow", { id: item.id })}
             />
           )}
         />

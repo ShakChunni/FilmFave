@@ -87,7 +87,7 @@ const MovieScreen = ({ route, navigation }) => {
       </Text>
       <Text style={styles.genreText}>{movie?.original_language}</Text>
       <View style={styles.overviewContainer}>
-        <Text style={styles.overviewTitle}>Overview</Text>
+        <Text style={styles.overviewTitle}>Synopsis</Text>
         <Text style={styles.overviewText}>{movie?.overview}</Text>
       </View>
     </View>

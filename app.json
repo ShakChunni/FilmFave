@@ -4,27 +4,31 @@
     "slug": "FilmFave",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "assets/filmfave.png",
+    "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "assets/filmfave.png",
+      "image": "./assets/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "assets/filmfave.png",
+        "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.shakchunni.FilmFave"
     },
     "web": {
-      "favicon": "assets/favicon.png"
+      "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "327a928b-0423-4041-a8c9-f8408c32f436"
+      }
     }
   }
 }

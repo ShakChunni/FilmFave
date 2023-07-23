@@ -13,7 +13,7 @@ export default () => {
     Black: require("./assets/fonts/NunitoSans_10pt-Black.ttf"),
     Bold: require("./assets/fonts/NunitoSans_10pt-Bold.ttf"),
     Light: require("./assets/fonts/NunitoSans_10pt-Light.ttf"),
-    Regular: require("./assets/fonts/NunitoSans_10pt-Light.ttf"),
+    Regular: require("./assets/fonts/NunitoSans_10pt-SemiBold.ttf"),
     Italic: require("./assets/fonts/NunitoSans_10pt-BoldItalic.ttf"),
     SemiBold: require("./assets/fonts/NunitoSans_10pt-SemiBold.ttf"),
   });
