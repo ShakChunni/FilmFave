@@ -6,11 +6,14 @@ import {
   View,
   Image,
   Dimensions,
+  Touchable,
+  TouchableOpacity,
 } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import { LinearGradient } from "expo-linear-gradient";
 import { getMovieID, getPoster } from "../services/MovieService";
 import ItemSeparator from "../components/ItemSeparator";
+import { Feather } from "@expo/vector-icons";
 
 const { height, width } = Dimensions.get("screen");
 const setHeight = (h) => (height / 100) * h;
@@ -37,6 +40,12 @@ const MovieScreen = ({ route, navigation }) => {
           source={{ uri: getPoster(movie.backdrop_path) }}
         />
       </View>
+      <View style={styles.headerContainer}>
+        <TouchableOpacity>
+          <Feather name="chevron-left" size={35} color="#FFFFFF" />
+        </TouchableOpacity>
+        <Text style={styles.headerText}>Share</Text>
+      </View>
       <ItemSeparator height={setHeight(37)} />
       <Text>{movie.title}</Text>
     </ScrollView>
@@ -48,7 +57,7 @@ export default MovieScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#3B3B3B",
+    backgroundColor: "#ffffff",
   },
   moviePosterImageContainer: {
     height: setHeight(35),
@@ -73,5 +82,20 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: 0,
     elevation: 9,
-  }, //ajkey korbo nah ar
+  },
+  headerContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    right: 0,
+    left: 0,
+    top: 50,
+    elevation: 20,
+    paddingHorizontal: 20,
+    position: "absolute",
+  },
+  headerText: {
+    color: "#ffffff",
+    fontFamily: "Bold",
+    fontSize: 16,
+  },
 });
