@@ -121,7 +121,7 @@ const styles = StyleSheet.create({
   movieTitleText: {
     fontFamily: "Bold",
     fontSize: 14,
-    color: "#000000",
+    color: "#E6E6FA",
     paddingVertical: 1,
   },
 
