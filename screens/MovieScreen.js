@@ -17,7 +17,6 @@ import { getMovieID, getPoster, getVideo } from "../services/MovieService";
 import ItemSeparator from "../components/ItemSeparator";
 import { Ionicons, Feather } from "@expo/vector-icons";
 import { appendToResponse } from "../services/APIs";
-import CastCard from "../components/CastCard";
 
 const { height, width } = Dimensions.get("screen");
 const setHeight = (h) => (height / 100) * h;
@@ -25,15 +24,28 @@ const setWidth = (w) => (width / 100) * w;
 const MovieScreen = ({ route, navigation }) => {
   const { id } = route.params;
   const [movie, setMovie] = useState({});
+  const [isCastSelected, setIsCastSelected] = useState(true);
+
   useEffect(() => {
-    getMovieID(
-      id,
-      `${appendToResponse.VIDEOS}, ${appendToResponse.CREDITS}`
-    ).then((res) => setMovie(res.data));
+    getMovieID(id, `${appendToResponse.VIDEOS}, ${appendToResponse.CREDITS}`)
+      .then((res) => {
+        console.log("Movie Data:", res.data); // Check the movie data
+
+        // Check if credits data exists
+        if (res.data.credits) {
+          console.log("Credits Data:", res.data.credits); // Check the credits data
+          console.log("Cast Members:", res.data.credits.cast); // Check the cast members data
+        } else {
+          console.log("Credits Data Not Available");
+        }
+
+        setMovie(res.data);
+      })
+      .catch((error) => console.error("Error fetching movie details:", error));
   }, []);
 
   return (
-    <ScrollView>
+    <ScrollView style={styles.container}>
       <StatusBar style="light" />
       <View style={styles.moviePosterImageContainer}>
         <LinearGradient
@@ -64,10 +76,19 @@ const MovieScreen = ({ route, navigation }) => {
       </TouchableOpacity>
       <ItemSeparator height={setHeight(37)} />
       <View style={styles.movieTitleContainer}>
-        <Text style={styles.movieTitle}>{movie?.original_title}</Text>
+        <Text style={styles.movieTitle}>
+          {movie?.original_title} <Text style={styles.status}>{movie.status}</Text>
+        </Text>
         <View style={styles.row}>
-          <Ionicons name="thumbs-up" size={24} color="black" />
-          <Text style={styles.ratingText}>{movie?.vote_count}</Text>
+          <Image
+            source={require("../assets/images/icons8-imdb-96.png")}
+            style={{
+              borderBottomLeftRadius: 5,
+              height: 20,
+              width: 40,
+            }}
+          />
+          <Text style={styles.ratingText}>{movie?.vote_average}</Text>
         </View>
       </View>
       <Text style={styles.genreText}>
@@ -79,22 +100,6 @@ const MovieScreen = ({ route, navigation }) => {
         <Text style={styles.overviewTitle}>Overview</Text>
         <Text style={styles.overviewText}>{movie?.overview}</Text>
       </View>
-      <View>
-        <Text>Cast</Text>
-        <FlatList
-          style={{ marginVertical: 5 }}
-          data={movie?.credits?.cast}
-          keyExtractor={(item) => item?.credit_id}
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          ListHeaderComponent={() => <ItemSeparator width={20} />}
-          ItemSeparatorComponent={() => <ItemSeparator width={20} />}
-          ListFooterComponent={() => <ItemSeparator width={20} />}
-          renderItem={({ item }) => <CastCard
-           name={item?.name}
-            />}
-        />
-      </View>
     </ScrollView>
   );
 };
@@ -104,7 +109,12 @@ export default MovieScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#ffffff",
+    backgroundColor: "#000000",
+  },
+  status: {
+    color: "#E6E6FA",
+    fontFamily: "Italic",
+    fontSize: 14,
   },
   moviePosterImageContainer: {
     height: setHeight(35),
@@ -158,14 +168,14 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
   },
   movieTitle: {
-    color: "#000000",
+    color: "#EE82EE",
     fontFamily: "Bold",
     fontSize: 18,
     width: setWidth(60),
   },
   ratingText: {
     marginLeft: 5,
-    color: "#000000",
+    color: "yellow",
     fontFamily: "Black",
     fontSize: 15,
   },
@@ -174,34 +184,27 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   genreText: {
-    color: "#000000",
+    color: "#E6E6F8",
     paddingHorizontal: 20,
     paddingTop: 5,
     fontFamily: "Regular",
     fontSize: 13,
   },
   overviewContainer: {
-    //add color
     paddingHorizontal: 20,
     paddingVertical: 10,
     marginVertical: 10,
   },
   overviewTitle: {
-    color: "black",
-    fontFamily: "Bold",
+    color: "#EE82EE",
+    fontFamily: "Black",
     fontSize: 18,
   },
   overviewText: {
-    color: "black",
+    color: "#E6E6FA",
     paddingVertical: 5,
-    fontFamily: "bold",
-    fontSize: 14,
+    fontFamily: "Bold",
+    fontSize: 16,
     textAlign: "justify",
-  },
-  castTitle: {
-    marginLeft: 20,
-    color: "black",
-    fontFamily: "black",
-    fontSize: 18,
   },
 });

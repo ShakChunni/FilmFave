@@ -21,13 +21,19 @@ const getNowPlayingMovies = () =>
 const getUpComingMovies = () =>
   TMDB_HTTP_REQUEST.get(ENDPOINTS.UPCOMING_MOVIES);
 
-const getMovieID = (movieID, append_to_response = "") =>
-  TMDB_HTTP_REQUEST.get(
-    `${ENDPOINTS.MOVIE}/${movieID}`,
+const getMovieID = (movieID, append_to_response = "") => {
+  const url = `${ENDPOINTS.MOVIE}/${movieID}`;
+  console.log(
+    "API URL:",
+    append_to_response ? `${url}?append_to_response=${append_to_response}` : url
+  );
+  return TMDB_HTTP_REQUEST.get(
+    url,
     append_to_response ? { params: { append_to_response } } : null
   );
+};
 
-  const getVideo = (key) => `${youtubeURL}?v=${key}`;
+const getVideo = (key) => `${youtubeURL}?v=${key}`;
 
 const getGenres = () => TMDB_HTTP_REQUEST.get(ENDPOINTS.GENRES);
 const getPoster = (path) => `${TMDB_IMAGE_BASE_URL}/original${path}`;

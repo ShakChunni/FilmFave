@@ -15,6 +15,8 @@ const ENDPOINTS = {
 const appendToResponse = {
   VIDEOS: "videos",
   CREDITS: "credits",
+  RECOMMENDATIONS: "recommendations",
+  SIMILAR: "similar",
 };
 
 export {
