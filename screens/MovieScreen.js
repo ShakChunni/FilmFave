@@ -68,6 +68,16 @@ const MovieScreen = ({ route, navigation }) => {
           <Text style={styles.ratingText}>{movie?.vote_count}</Text>
         </View>
       </View>
+      <Text style={styles.genreText}>
+        {movie?.genres?.map((genre) => genre?.name)?.join(", ")} |{" "}
+        {movie?.runtime} Min
+      </Text>
+      <Text style={styles.genreText}>{movie?.original_language}</Text>
+      <View style={styles.overviewContainer}>
+        <Text style={styles.overviewTitle}>Overview</Text>
+        <Text style={styles.overviewText}>{movie?.overview}</Text>
+      </View>
+      
     </ScrollView>
   );
 };
@@ -147,10 +157,34 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   genreText: {
-    color: "grey",
+    color: "#000000",
     paddingHorizontal: 20,
     paddingTop: 5,
     fontFamily: "Regular",
     fontSize: 13,
+  },
+  overviewContainer: {
+//add color 
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    marginVertical: 10,
+  },
+  overviewTitle: {
+    color: "black",
+    fontFamily: "Bold",
+    fontSize: 18,
+  },
+  overviewText: {
+    color: "black",
+    paddingVertical: 5,
+    fontFamily: "bold",
+    fontSize: 14,
+    textAlign: "justify",
+  },
+  castTitle: {
+    marginLeft: 20,
+    color: "black",
+    fontFamily: "black",
+    fontSize: 18,
   },
 });
