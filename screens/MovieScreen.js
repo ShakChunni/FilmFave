@@ -24,21 +24,10 @@ const setWidth = (w) => (width / 100) * w;
 const MovieScreen = ({ route, navigation }) => {
   const { id } = route.params;
   const [movie, setMovie] = useState({});
-  const [isCastSelected, setIsCastSelected] = useState(true);
 
   useEffect(() => {
     getMovieID(id, `${appendToResponse.VIDEOS}, ${appendToResponse.CREDITS}`)
       .then((res) => {
-        console.log("Movie Data:", res.data); // Check the movie data
-
-        // Check if credits data exists
-        if (res.data.credits) {
-          console.log("Credits Data:", res.data.credits); // Check the credits data
-          console.log("Cast Members:", res.data.credits.cast); // Check the cast members data
-        } else {
-          console.log("Credits Data Not Available");
-        }
-
         setMovie(res.data);
       })
       .catch((error) => console.error("Error fetching movie details:", error));
