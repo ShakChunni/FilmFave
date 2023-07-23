@@ -16,7 +16,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import { getMovieID, getPoster, getVideo } from "../services/MovieService";
 import ItemSeparator from "../components/ItemSeparator";
 import { Ionicons, Feather } from "@expo/vector-icons";
-import { APPEND_TO_RESPONSE as AR } from "../services/APIs";
+import { appendToResponse} from "../services/APIs";
 
 const { height, width } = Dimensions.get("screen");
 const setHeight = (h) => (height / 100) * h;
@@ -25,7 +25,7 @@ const MovieScreen = ({ route, navigation }) => {
   const { id } = route.params;
   const [movie, setMovie] = useState({});
   useEffect(() => {
-    getMovieID(id, `${AR.VIDEOS}`).then((res) => setMovie(res.data));
+    getMovieID(id, `${appendToResponse.VIDEOS}`).then((res) => setMovie(res.data));
   }, []);
 
   return (

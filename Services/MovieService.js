@@ -4,7 +4,7 @@ import {
   TMDB_IMAGE_BASE_URL,
   API_KEY,
   ENDPOINTS,
-  YOUTUBE_BASE_URL,
+  youtubeURL,
 } from "./APIs";
 
 const TMDB_HTTP_REQUEST = axios.create({
@@ -27,7 +27,7 @@ const getMovieID = (movieID, append_to_response = "") =>
     append_to_response ? { params: { append_to_response } } : null
   );
 
-  const getVideo = (key) => `${YOUTUBE_BASE_URL}?v=${key}`;
+  const getVideo = (key) => `${youtubeURL}?v=${key}`;
 
 const getGenres = () => TMDB_HTTP_REQUEST.get(ENDPOINTS.GENRES);
 const getPoster = (path) => `${TMDB_IMAGE_BASE_URL}/original${path}`;
