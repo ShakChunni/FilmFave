@@ -1,19 +1,22 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   ScrollView,
   StyleSheet,
   Text,
   View,
-  Image,
   Dimensions,
-  Touchable,
+  Image,
   TouchableOpacity,
+  Linking,
+  FlatList,
+  Share,
 } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import { LinearGradient } from "expo-linear-gradient";
-import { getMovieID, getPoster } from "../services/MovieService";
+import { getMovieID, getPoster, getVideo } from "../services/MovieService";
 import ItemSeparator from "../components/ItemSeparator";
-import { Feather } from "@expo/vector-icons";
+import { Ionicons, Feather } from "@expo/vector-icons";
+import { APPEND_TO_RESPONSE as AR } from "../services/APIs";
 
 const { height, width } = Dimensions.get("screen");
 const setHeight = (h) => (height / 100) * h;
@@ -22,7 +25,7 @@ const MovieScreen = ({ route, navigation }) => {
   const { id } = route.params;
   const [movie, setMovie] = useState({});
   useEffect(() => {
-    getMovieID(id).then((res) => setMovie(res.data));
+    getMovieID(id, `${AR.VIDEOS}`).then((res) => setMovie(res.data));
   }, []);
 
   return (
@@ -41,11 +44,20 @@ const MovieScreen = ({ route, navigation }) => {
         />
       </View>
       <View style={styles.headerContainer}>
-        <TouchableOpacity>
+        <TouchableOpacity
+          activeOpacity={0.5}
+          onPress={() => navigation.goBack()}
+        >
           <Feather name="chevron-left" size={35} color="#FFFFFF" />
         </TouchableOpacity>
         <Text style={styles.headerText}>Share</Text>
       </View>
+      <TouchableOpacity
+        style={styles.playButtonStyle}
+        onPress={() => Linking.openURL(getVideo(movie.videos.results[0].key))}
+      >
+        <Ionicons name="play-circle" size={60} color="#FFFFFF" />
+      </TouchableOpacity>
       <ItemSeparator height={setHeight(37)} />
       <Text>{movie.title}</Text>
     </ScrollView>
@@ -97,5 +109,11 @@ const styles = StyleSheet.create({
     color: "#ffffff",
     fontFamily: "Bold",
     fontSize: 16,
+  },
+  playButtonStyle: {
+    position: "absolute",
+    top: 110,
+    left: setWidth(50) - 70 / 2,
+    elevation: 10,
   },
 });

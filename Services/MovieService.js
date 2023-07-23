@@ -1,5 +1,11 @@
 const axios = require("axios").default;
-import { TMDB_BASE_URL, TMDB_IMAGE_BASE_URL, API_KEY, ENDPOINTS } from "./APIs";
+import {
+  TMDB_BASE_URL,
+  TMDB_IMAGE_BASE_URL,
+  API_KEY,
+  ENDPOINTS,
+  YOUTUBE_BASE_URL,
+} from "./APIs";
 
 const TMDB_HTTP_REQUEST = axios.create({
   baseURL: TMDB_BASE_URL,
@@ -14,8 +20,15 @@ const getNowPlayingMovies = () =>
   TMDB_HTTP_REQUEST.get(ENDPOINTS.NOW_PLAYING_MOVIES);
 const getUpComingMovies = () =>
   TMDB_HTTP_REQUEST.get(ENDPOINTS.UPCOMING_MOVIES);
-const getMovieID = (movieID) =>
-  TMDB_HTTP_REQUEST.get(`${ENDPOINTS.MOVIE}/${movieID}`);
+
+const getMovieID = (movieID, append_to_response = "") =>
+  TMDB_HTTP_REQUEST.get(
+    `${ENDPOINTS.MOVIE}/${movieID}`,
+    append_to_response ? { params: { append_to_response } } : null
+  );
+
+  const getVideo = (key) => `${YOUTUBE_BASE_URL}?v=${key}`;
+
 const getGenres = () => TMDB_HTTP_REQUEST.get(ENDPOINTS.GENRES);
 const getPoster = (path) => `${TMDB_IMAGE_BASE_URL}/original${path}`;
 
@@ -25,4 +38,5 @@ export {
   getUpComingMovies,
   getPoster,
   getGenres,
+  getVideo,
 };
