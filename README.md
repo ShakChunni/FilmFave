@@ -5,7 +5,8 @@ FilmFave is a mobile application built with React Native that allows users to di
 
 
 
-## Features![Screenshot_1690156266](https://github.com/ShakChunni/FilmFave/assets/89923248/7ba29f50-579e-4030-84fd-75632f33fe6f)
+![Screenshot_1690156266 (1)](https://github.com/ShakChunni/FilmFave/assets/89923248/c025c3cf-f08e-49b6-bb18-429186641c97)
+
 
 
 - View Now Playing Movies: Get a list of currently playing movies and their details.
