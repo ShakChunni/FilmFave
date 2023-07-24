@@ -35,7 +35,7 @@ const HomeScreen = ({ navigation }) => {
 
   return (
     <ScrollView style={styles.container}>
-      <StatusBar style="light" translucent={false} />
+      <StatusBar backgroundColor="#000000" style="light" translucent={false} />
       <View style={styles.headerContainer}>
         <Text style={styles.headerTitle}> FilmFave </Text>
         <Text style={styles.headerSubTitle}> Welcome, user! </Text>
@@ -125,7 +125,7 @@ const HomeScreen = ({ navigation }) => {
               voteCount={item.vote_count}
               poster={item.poster_path}
               size={0.7}
-              notLiked={false}          
+              notLiked={false}
             />
           )}
         />

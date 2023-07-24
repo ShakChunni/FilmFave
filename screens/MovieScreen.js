@@ -82,9 +82,12 @@ const MovieScreen = ({ route, navigation }) => {
               borderBottomLeftRadius: 5,
               height: 20,
               width: 40,
+              marginRight: 2,
             }}
           />
-          <Text style={styles.ratingText}>{movie?.vote_average}</Text>
+          <Text style={styles.ratingText}>
+            {movie?.vote_average?.toFixed(1)}
+          </Text>
         </View>
       </View>
       <Text style={styles.status}>Release Date: {movie?.release_date}</Text>
@@ -193,16 +196,16 @@ const styles = StyleSheet.create({
   },
   movieTitle: {
     color: "#EE82EE",
-    fontFamily: "Bold",
-    fontSize: 18,
+    fontFamily: "Black",
+    fontSize: 20,
     width: setWidth(75),
   },
   ratingText: {
-    marginLeft: 1,
-    marginRight: 5,
+    marginLeft: 2,
+    marginRight: 10,
     color: "yellow",
     fontFamily: "Bold",
-    fontSize: 14,
+    fontSize: 16,
   },
   row: {
     flexDirection: "row",
@@ -222,7 +225,7 @@ const styles = StyleSheet.create({
   },
   overviewTitle: {
     color: "#EE82EE",
-    fontFamily: "Black",
+    fontFamily: "SemiBold",
     fontSize: 18,
   },
   overviewText: {
@@ -234,7 +237,7 @@ const styles = StyleSheet.create({
   },
   similarMovies: {
     color: "#EE82EE",
-    fontFamily: "Black",
+    fontFamily: "SemiBold",
     fontSize: 18,
     paddingHorizontal: 20,
     paddingTop: 5,
