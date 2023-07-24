@@ -1,4 +1,11 @@
-import { FlatList, ScrollView, StyleSheet, Text, View } from "react-native";
+import {
+  FlatList,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+  TextInput,
+} from "react-native";
 import React, { useEffect } from "react";
 import { useState } from "react";
 import GenreCards from "../components/GenreCards";
@@ -10,9 +17,13 @@ import {
   getUpComingMovies,
   getGenres,
   getNowPlayingTVShows,
+  searchMovies,
 } from "../services/MovieService";
 
 const HomeScreen = ({ navigation }) => {
+  const [searchQuery, setSearchQuery] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
+
   const [activeGenre, setActiveGenre] = useState("All");
   const [nowPlayingMovies, setNowPlayingMovies] = useState({});
   const [upComingMovies, setUpComingMovies] = useState({});
@@ -33,6 +44,21 @@ const HomeScreen = ({ navigation }) => {
     );
   }, []);
 
+  // Function to handle the search when the user types in the search bar
+  const handleSearch = (query) => {
+    setSearchQuery(query);
+
+    if (query.trim() !== "") {
+      searchMovies(query)
+        .then((response) => setSearchResults(response.data.results))
+        .catch((error) =>
+          console.error("Error fetching search results:", error)
+        );
+    } else {
+      setSearchResults([]);
+    }
+  };
+
   return (
     <ScrollView style={styles.container}>
       <StatusBar backgroundColor="#000000" style="light" translucent={false} />
@@ -41,6 +67,12 @@ const HomeScreen = ({ navigation }) => {
         <Text style={styles.headerSubTitle}> Welcome, user! </Text>
       </View>
       <View style={styles.genreListContainer}>
+        <TextInput
+          style={styles.searchBar}
+          placeholder="Search for movies..."
+          value={searchQuery}
+          onChangeText={handleSearch}
+        />
         <FlatList
           data={genres}
           horizontal
@@ -59,8 +91,10 @@ const HomeScreen = ({ navigation }) => {
         />
       </View>
       <View>
-        <FlatList //movie card
-          data={nowPlayingMovies.results}
+        <FlatList
+          data={
+            searchQuery.trim() === "" ? nowPlayingMovies.results : searchResults
+          }
           horizontal
           showsHorizontalScrollIndicator={false}
           keyExtractor={(item) => item.id.toString()}
@@ -137,6 +171,10 @@ const HomeScreen = ({ navigation }) => {
 export default HomeScreen;
 
 const styles = StyleSheet.create({
+  searchBar: {
+    padding: 10,
+    backgroundColor: "#fff",
+  },
   container: {
     flex: 1,
     backgroundColor: "#000000",

@@ -5,6 +5,7 @@ import {
   API_KEY,
   ENDPOINTS,
   youtubeURL,
+  SEARCH_MOVIES,
 } from "./APIs";
 
 const TMDB_HTTP_REQUEST = axios.create({
@@ -36,6 +37,9 @@ const getVideo = (key) => `${youtubeURL}?v=${key}`;
 const getGenres = () => TMDB_HTTP_REQUEST.get(ENDPOINTS.GENRES);
 const getPoster = (path) => `${TMDB_IMAGE_BASE_URL}/original${path}`;
 
+const searchMovies = (query) =>
+  TMDB_HTTP_REQUEST.get(SEARCH_MOVIES, { params: { query } });
+
 const getNowPlayingTVShows = () =>
   TMDB_HTTP_REQUEST.get(ENDPOINTS.ON_THE_AIR_TV);
 const getTVGenres = () => TMDB_HTTP_REQUEST.get(ENDPOINTS.TV_GENRES);
@@ -49,4 +53,5 @@ export {
   getVideo,
   getNowPlayingTVShows,
   getTVGenres,
+  searchMovies,
 };
