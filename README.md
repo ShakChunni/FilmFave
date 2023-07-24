@@ -3,11 +3,11 @@
 FilmFave is a mobile application built with React Native that allows users to discover and explore their favorite movies and TV shows. It provides information about now playing movies, upcoming movies, and on-the-air TV shows. Users can view details of individual movies and TV shows, including their synopsis, ratings, and genres. The app also allows users to watch trailers of movies and share their favorite content with friends. Additionally, users can give ratings to movies and TV shows, enabling them to express their opinions and help others in their entertainment choices.
 
 
-![Screenshot_1690156266](https://github.com/ShakChunni/FilmFave/assets/89923248/6edf00a6-5fc7-4ad7-aa18-40c8157f834e)
+![Screenshot_1690156266](https://github.com/ShakChunni/FilmFave/assets/89923248/6edf00a6-5fc7-4ad7-aa18-40c8157f834e) ![Screenshot_1690156277](https://github.com/ShakChunni/FilmFave/assets/89923248/6e0a1538-43ba-40d8-9fe7-3298188fd5c2)
 
 
 
-![Screenshot_1690156277](https://github.com/ShakChunni/FilmFave/assets/89923248/6e0a1538-43ba-40d8-9fe7-3298188fd5c2)
+
 
 
 
