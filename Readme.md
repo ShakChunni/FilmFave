@@ -16,7 +16,7 @@ FilmFave is a mobile application built with React Native that allows users to di
 
 ## Installation
 
-1. Download the APK file from [Google Drive] <https://drive.google.com/file/d/1cdStAu3dri-vT8ce9BUEccM9RDRiyAk9/view?usp=sharing>
+1. Download the APK file from [Google Drive] https://drive.google.com/file/d/1cdStAu3dri-vT8ce9BUEccM9RDRiyAk9/view?usp=sharing
 2. Install the APK on your Android device by opening the file.
 3. Allow installation from unknown sources if prompted.
 
@@ -54,6 +54,6 @@ FilmFave is a testament to my progress and proficiency in React Native developme
 
 ## Contact
 
-If you have any questions or need further assistance, you can contact me at <ashfaq601230@gmail.com>
+If you have any questions or need further assistance, you can contact me at ashfaq601230@gmail.com
 
 ---
