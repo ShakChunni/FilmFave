@@ -1,16 +1,10 @@
-import {
-  StyleSheet,
-  Text,
-  View,
-  TouchableOpacity,
-  Dimensions,
-} from "react-native";
 import React from "react";
+import { StyleSheet, Text, TouchableOpacity, Dimensions } from "react-native";
 
 const { width } = Dimensions.get("screen");
 const setWidth = (w) => (width / 100) * w;
 
-const GenreCards = ({ genreName, active, onPress }) => {
+const GenreCards = React.memo(({ genreName, active, onPress }) => {
   return (
     <TouchableOpacity
       style={{
@@ -27,9 +21,7 @@ const GenreCards = ({ genreName, active, onPress }) => {
       </Text>
     </TouchableOpacity>
   );
-};
-
-export default GenreCards;
+});
 
 const styles = StyleSheet.create({
   cardsStyle: {
@@ -48,3 +40,5 @@ const styles = StyleSheet.create({
     color: "#FB6B90",
   },
 });
+
+export default GenreCards;

@@ -23,12 +23,12 @@ import {
 const HomeScreen = ({ navigation }) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState([]);
-
-  const [activeGenre, setActiveGenre] = useState("All");
   const [nowPlayingMovies, setNowPlayingMovies] = useState({});
   const [upComingMovies, setUpComingMovies] = useState({});
   const [nowPlayingTVShows, setNowPlayingTVShows] = useState({});
+  const [activeGenre, setActiveGenre] = useState("All");
   const [genres, setGenres] = useState([{ id: 10130, name: "All" }]);
+
   useEffect(() => {
     getNowPlayingMovies().then((movieResponse) =>
       setNowPlayingMovies(movieResponse.data)
@@ -44,8 +44,8 @@ const HomeScreen = ({ navigation }) => {
     );
   }, []);
 
-  // Function to handle the search when the user types in the search bar
   const handleSearch = (query) => {
+    //search bar fuctionality
     setSearchQuery(query);
 
     if (query.trim() !== "") {
@@ -70,6 +70,7 @@ const HomeScreen = ({ navigation }) => {
         <TextInput
           style={styles.searchBar}
           placeholder="Search for movies..."
+          placeholderTextColor="#E6E6FA"
           value={searchQuery}
           onChangeText={handleSearch}
         />
@@ -105,7 +106,7 @@ const HomeScreen = ({ navigation }) => {
             <MovieCard
               title={item.title}
               language={item.original_language}
-              voteAverage={item.vote_average}
+              voteAverage={item.vote_average.toFixed(1)}
               voteCount={item.vote_count}
               poster={item.poster_path}
               notLiked={true}
@@ -135,6 +136,7 @@ const HomeScreen = ({ navigation }) => {
               poster={item.poster_path}
               size={0.7}
               notLiked={false}
+              onPress={() => navigation.navigate("Movie", { id: item.id })}
             />
           )}
         />
@@ -172,8 +174,13 @@ export default HomeScreen;
 
 const styles = StyleSheet.create({
   searchBar: {
+    borderRadius: 5,
     padding: 10,
-    backgroundColor: "#fff",
+    marginLeft: 20,
+    backgroundColor: "#000000",
+    color: "#EE82EE",
+    fontFamily: "Bold",
+    marginBottom: 10,
   },
   container: {
     flex: 1,

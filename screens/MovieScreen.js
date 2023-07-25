@@ -9,7 +9,6 @@ import {
   TouchableOpacity,
   Linking,
   FlatList,
-  Share,
 } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import { LinearGradient } from "expo-linear-gradient";
@@ -101,7 +100,6 @@ const MovieScreen = ({ route, navigation }) => {
         <Text style={styles.overviewText}>{movie?.overview}</Text>
       </View>
 
-      {/* Similar Movies */}
       <Text style={styles.similarMovies}>You might also like</Text>
       <View>
         <FlatList //movie card

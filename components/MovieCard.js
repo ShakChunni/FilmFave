@@ -12,16 +12,17 @@ import React, { useState } from "react";
 import { Ionicons } from "@expo/vector-icons";
 import { getPoster } from "../services/MovieService";
 
-const MovieCard = ({
-  title,
-  poster,
-  language,
-  voteAverage,
-  voteCount,
-  size,
-  notLiked,
-  onPress,
-}) => {
+const MovieCard = React.memo(
+  ({
+    title,
+    poster,
+    language,
+    voteAverage,
+    voteCount,
+    size,
+    notLiked,
+    onPress,
+  }) => {
   const [liked, setLiked] = useState(false);
   const [vote, setVote] = useState(voteCount);
 
@@ -91,11 +92,7 @@ const MovieCard = ({
       </View>
     </TouchableOpacity>
   );
-};
-
-MovieCard.defaultProps = {
-  size: 1,
-};
+});
 
 MovieCard.defaultProps = {
   size: 1,
