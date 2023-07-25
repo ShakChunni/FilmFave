@@ -7,9 +7,10 @@ FilmFave is a mobile application built with React Native that allows users to di
 ## Features
 
 - View Now Playing Movies: Get a list of currently playing movies and their details.
+- Search for a movie and TV show: Search for a movie or TV show by title.
+- Movie Details: View in-depth information about individual movies, including synopsis, ratings, release date and genres.
 - Upcoming Movies: Explore upcoming movie releases and their information.
 - On-The-Air TV Shows: Discover TV shows that are currently on the air.
-- Movie Details: View in-depth information about individual movies, including synopsis, ratings, release date and genres.
 - Watch Trailers: Watch trailers of movies to get a glimpse of their content.
 - Rate Movies and TV Shows: Express your opinions by giving ratings to movies and TV shows.
 - Share Content: Share your favorite movies and TV shows with friends.
